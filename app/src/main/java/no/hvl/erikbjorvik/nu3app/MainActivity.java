@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -24,50 +25,66 @@ import java.util.ArrayList;
 import java.util.List;
 
 import no.hvl.erikbjorvik.nu3app.Misc.FoodListWithImagesArrayAdapter;
+import no.hvl.erikbjorvik.nu3app.Misc.MainHelper;
+import no.hvl.erikbjorvik.nu3app.Models.Consumable;
 import no.hvl.erikbjorvik.nu3app.Models.PredefinedMeal;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static ArrayList<Consumable> meals;
+    public static FoodListWithImagesArrayAdapter adapter;
+    public static boolean adapterAction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        request();
+        ListView listView = (ListView) findViewById(R.id.predefinedMealsTable);
+        this.meals = new ArrayList<Consumable>();
+        this.adapter = new FoodListWithImagesArrayAdapter(
+                getApplicationContext(), R.layout.foodlistwithimages, this.meals);
+        listView.setAdapter(this.adapter);
+        request("http://nu3.azurewebsites.net/api/consumable/category/general");
+
     }
 
-    private void request() {
+    public void mealButtonClick(View v) {
+        String tag = v.getTag().toString();
+        Toast.makeText(MainActivity.this, tag, Toast.LENGTH_SHORT).show();
+        if (tag.equals("dinner")) {
+            request("http://nu3.azurewebsites.net/api/consumable/category/"+tag);
+        }
+        else {
+            request("http://nu3.azurewebsites.net/api/consumable/category/general");
+
+        }
+    }
+
+    private void request(String url) {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://nu3.azurewebsites.net/api/predefinedmeals";
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        ArrayList<PredefinedMeal> meals;
                         try {
+                            Log.i("Adapter count before ", MainActivity.adapter.getCount() + "/" + MainActivity.meals.size());
+
                             ObjectMapper mapper = new ObjectMapper();
-                            meals = mapper.readValue(response, new TypeReference<List<PredefinedMeal>>(){});
-                            ListView listView = (ListView) findViewById(R.id.predefinedMealsTable);
+                            ArrayList<Consumable> newList = mapper.readValue(response, new TypeReference<List<Consumable>>(){});
+                            MainActivity.meals.clear();
+                            MainActivity.meals.addAll(newList);
+                            MainActivity.adapter.notifyDataSetChanged();
 
-                            FoodListWithImagesArrayAdapter adapter = new FoodListWithImagesArrayAdapter(
-                                    getApplicationContext(), R.layout.foodlistwithimages, meals);
+                            Log.i("Adapter count after ", MainActivity.adapter.getCount() + "/" + MainActivity.meals.size());
+                            Log.i("JSON parsing", "Successed" + MainActivity.meals.toString());
 
-                            listView.setAdapter(adapter);
-                        } catch(Exception e) {
-                            ListView listView = (ListView) findViewById(R.id.predefinedMealsTable);
-
-                            ArrayList<PredefinedMeal> predefinedMealsArrayList = new ArrayList<>();
-                            predefinedMealsArrayList.add(new PredefinedMeal("Egg ja"));
-                            predefinedMealsArrayList.add(new PredefinedMeal("Lasagne"));
-
-                            FoodListWithImagesArrayAdapter adapter = new FoodListWithImagesArrayAdapter(
-                                    getApplicationContext(), R.layout.foodlistwithimages, predefinedMealsArrayList);
-
-                            listView.setAdapter(adapter);
-                            Log.w("JSON parsing", "Could not parse response to json:" + response);
+                        }
+                        catch(Exception e) {
+                            Log.e("JSON parsing", e.toString());
                         }
 
                     }

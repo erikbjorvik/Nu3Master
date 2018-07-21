@@ -91,6 +91,8 @@
             android:layout_marginStart="8dp"
             android:background="@drawable/button"
             android:elevation="7dp"
+            android:onClick="mealButtonClick"
+            android:tag="breakfast"
             android:text="Breakfast: 0 kcal"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -103,6 +105,8 @@
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:background="@drawable/button"
+            android:onClick="mealButtonClick"
+            android:tag="lunch"
             android:text="Lunch: 0 kcal"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -115,6 +119,8 @@
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:background="@drawable/button"
+            android:onClick="mealButtonClick"
+            android:tag="dinner"
             android:text="Dinner: 0 kcal"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -129,6 +135,8 @@
             android:background="@drawable/button"
             android:text="Supper: 0 kcal"
             android:textColor="@android:color/white"
+            android:tag="supper"
+            android:onClick="mealButtonClick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/dinnerButton"
             app:layout_constraintTop_toTopOf="parent"
@@ -142,6 +150,8 @@
             android:background="@drawable/button"
             android:text="Snacks: 0 kcal"
             android:textColor="@android:color/white"
+            android:tag="snack"
+            android:onClick="mealButtonClick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/supperButton"
             app:layout_constraintTop_toTopOf="parent" />
@@ -151,9 +161,33 @@
         android:id="@+id/predefinedMealsTable"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginEnd="320dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mealsBackground" />
+
+    <TextView
+        android:id="@+id/drinksBg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/blue_gradient"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/predefinedMealsTable"
+        app:layout_constraintTop_toBottomOf="@+id/mealsBackground" />
+
+    <TextView
+        android:id="@+id/drinksLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/andika"
+        android:text="Drikke"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="@+id/drinksBg"
+        app:layout_constraintTop_toTopOf="@+id/drinksBg" />
 
 </android.support.constraint.ConstraintLayout>

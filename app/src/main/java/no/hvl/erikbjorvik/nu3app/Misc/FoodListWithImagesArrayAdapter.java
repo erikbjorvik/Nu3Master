@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import no.hvl.erikbjorvik.nu3app.Models.Consumable;
 import no.hvl.erikbjorvik.nu3app.Models.PredefinedMeal;
 import no.hvl.erikbjorvik.nu3app.R;
 
@@ -21,13 +22,13 @@ import no.hvl.erikbjorvik.nu3app.R;
  * Created by erikbjorvik on 14.07.2018.
  */
 
-public class FoodListWithImagesArrayAdapter extends ArrayAdapter<PredefinedMeal> {
+public class FoodListWithImagesArrayAdapter extends ArrayAdapter<Consumable> {
 
     private static final String TAG = "FoodListWithImagesAdapter";
     private Context context;
     private int resource;
 
-    public FoodListWithImagesArrayAdapter(Context context, int resource, ArrayList<PredefinedMeal> objects) {
+    public FoodListWithImagesArrayAdapter(Context context, int resource, ArrayList<Consumable> objects) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
@@ -42,7 +43,11 @@ public class FoodListWithImagesArrayAdapter extends ArrayAdapter<PredefinedMeal>
         TextView name = (TextView) convertView.findViewById(R.id.tableText);
         ImageView image = (ImageView) convertView.findViewById(R.id.tableImage);
         name.setText(getItem(position).getName());
-        Picasso.get().load(getItem(position).getImagePath()).into(image);
+
+        if (getItem(position).getImagePath() != null) {
+            Picasso.get().load(getItem(position).getImagePath()).into(image);
+        }
+
         return convertView;
     }
 }

@@ -38,9 +38,6 @@
             android:id="@+id/tableImage"
             android:layout_width="300dp"
             android:layout_height="140dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tableBg"
@@ -71,29 +68,26 @@
 
         <TextView
             android:id="@+id/numberOfportions"
-            android:layout_width="200dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@android:color/white"
+            android:layout_width="77dp"
+            android:layout_height="59dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="40dp"
             android:paddingHorizontal="5dp"
             android:paddingVertical="5dp"
-            android:text="0 porsjoner"
-            app:layout_constraintStart_toEndOf="@+id/tableImage"
-            app:layout_constraintTop_toBottomOf="@+id/tableText" />
-
-        <Button
-            android:id="@+id/mealAmountButton"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            android:drawableLeft="@android:drawable/ic_menu_edit"
-            android:text="Spesifisér"
-            app:layout_constraintBottom_toBottomOf="@+id/tableBg"
+            android:text="0"
+            android:textSize="40sp"
             app:layout_constraintEnd_toStartOf="@+id/plusButton"
-            app:layout_constraintTop_toTopOf="@+id/tableBg" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="8dp"
+            android:text="Porsjon"
+            app:layout_constraintEnd_toStartOf="@+id/minusButton"
+            app:layout_constraintTop_toBottomOf="@+id/numberOfportions" />
 
     </android.support.constraint.ConstraintLayout>
 
