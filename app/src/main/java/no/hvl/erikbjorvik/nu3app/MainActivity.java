@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import no.hvl.erikbjorvik.nu3app.Misc.FoodListWithImagesArrayAdapter;
+import no.hvl.erikbjorvik.nu3app.Misc.GridAdapter;
 import no.hvl.erikbjorvik.nu3app.Misc.MainHelper;
 import no.hvl.erikbjorvik.nu3app.Models.Consumable;
 import no.hvl.erikbjorvik.nu3app.Models.PredefinedMeal;
@@ -32,20 +34,36 @@ import no.hvl.erikbjorvik.nu3app.Models.PredefinedMeal;
 public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<Consumable> meals;
-    public static FoodListWithImagesArrayAdapter adapter;
-    public static boolean adapterAction;
+
+    GridView gridview;
+    private static GridAdapter gridAdapter;
+
+    public static String[] osNameList = {
+            "Android",
+            "iOS"
+    };
+    public static int[] osImages = {
+            R.mipmap.ic_launcher,
+            R.mipmap.ic_launcher_round
+           };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        ListView listView = (ListView) findViewById(R.id.predefinedMealsTable);
+        
         this.meals = new ArrayList<Consumable>();
+        this.gridAdapter = new GridAdapter(this, this.meals);
+
+        gridview = (GridView) findViewById(R.id.predefinedMealsTable);
+        gridview.setAdapter(this.gridAdapter);
+        request("http://nu3.azurewebsites.net/api/consumable/category/general");
+
+        /*ListView listView = (ListView) findViewById(R.id.predefinedMealsTable);
         this.adapter = new FoodListWithImagesArrayAdapter(
                 getApplicationContext(), R.layout.foodlistwithimages, this.meals);
         listView.setAdapter(this.adapter);
-        request("http://nu3.azurewebsites.net/api/consumable/category/general");
+        request("http://nu3.azurewebsites.net/api/consumable/category/general");*/
 
     }
 
@@ -71,15 +89,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            Log.i("Adapter count before ", MainActivity.adapter.getCount() + "/" + MainActivity.meals.size());
 
                             ObjectMapper mapper = new ObjectMapper();
                             ArrayList<Consumable> newList = mapper.readValue(response, new TypeReference<List<Consumable>>(){});
                             MainActivity.meals.clear();
                             MainActivity.meals.addAll(newList);
-                            MainActivity.adapter.notifyDataSetChanged();
+                            MainActivity.gridAdapter.notifyDataSetChanged();
 
-                            Log.i("Adapter count after ", MainActivity.adapter.getCount() + "/" + MainActivity.meals.size());
                             Log.i("JSON parsing", "Successed" + MainActivity.meals.toString());
 
                         }
