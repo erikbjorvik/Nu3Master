@@ -17,6 +17,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/kcalToday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="40dp"
+        android:text="1252"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/topMenuContainer"
+        app:layout_constraintTop_toTopOf="@+id/topMenuContainer" />
+
+    <TextView
         android:id="@+id/topPatientStatic"
         android:layout_width="58dp"
         android:layout_height="19dp"
@@ -172,23 +183,80 @@
         android:id="@+id/drinksBg"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/blue_gradient"
+        android:background="@color/colorGrey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/predefinedMealsTable"
         app:layout_constraintTop_toBottomOf="@+id/mealsBackground" />
 
     <TextView
+        android:id="@+id/portionCountBg"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/bg_rounded_light_blue"
+        app:layout_constraintStart_toEndOf="@+id/drinksLabel"
+        app:layout_constraintTop_toTopOf="@+id/drinksBg" />
+
+    <TextView
+        android:id="@+id/portionCount"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:text="1,25"
+        android:textColor="@color/colorPrimary"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="@+id/portionCountBg"
+        app:layout_constraintEnd_toEndOf="@+id/portionCountBg"
+        app:layout_constraintStart_toStartOf="@+id/portionCountBg"
+        app:layout_constraintTop_toTopOf="@+id/portionCountBg" />
+
+    <TextView
         android:id="@+id/drinksLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/andika"
         android:text="Drikke"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/holo_blue_light"
         android:textSize="40sp"
         app:layout_constraintStart_toStartOf="@+id/drinksBg"
         app:layout_constraintTop_toTopOf="@+id/drinksBg" />
+
+    <TextView
+        android:id="@+id/kcalLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="kcal så langt:"
+        app:layout_constraintBottom_toTopOf="@+id/kcalToday"
+        app:layout_constraintEnd_toEndOf="@+id/topMenuContainer" />
+
+    <ImageView
+        android:id="@+id/emoticonKcal"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toStartOf="@+id/kcalToday"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/smile" />
+
+    <TextView
+        android:id="@+id/kcalDiff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="67dp"
+        android:text="- 451"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/topMenuContainer"
+        app:layout_constraintTop_toTopOf="@+id/topMenuContainer" />
+
 
 </android.support.constraint.ConstraintLayout>

@@ -67,18 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void mealButtonClick(View v) {
-        String tag = v.getTag().toString();
-        Toast.makeText(MainActivity.this, tag, Toast.LENGTH_SHORT).show();
-        if (tag.equals("dinner")) {
-            request("http://nu3.azurewebsites.net/api/consumable/category/"+tag);
-        }
-        else {
-            request("http://nu3.azurewebsites.net/api/consumable/category/general");
-
-        }
-    }
-
     private void request(String url) {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -114,4 +102,17 @@ public class MainActivity extends AppCompatActivity {
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
     }
+
+    public void mealButtonClick(View v) {
+        String tag = v.getTag().toString();
+        Toast.makeText(MainActivity.this, tag, Toast.LENGTH_SHORT).show();
+        if (tag.equals("dinner")) {
+            request("http://nu3.azurewebsites.net/api/consumable/category/"+tag);
+        }
+        else {
+            request("http://nu3.azurewebsites.net/api/consumable/category/general");
+
+        }
+    }
+
 }

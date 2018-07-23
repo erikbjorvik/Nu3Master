@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,35 +60,33 @@ public class GridAdapter extends BaseAdapter{
     {
         TextView gridText;
         ImageView gridImage;
+        Button plusOne;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
-        Holder holder=new Holder();
-        View rowView;
+        Holder holder = new Holder();
+        View rowView = inflater.inflate(R.layout.grid_food, null);
 
-        rowView = inflater.inflate(R.layout.grid_food, null);
-        holder.gridText = (TextView) rowView.findViewById(R.id.gridText);
-        holder.gridImage = (ImageView) rowView.findViewById(R.id.gridImage);
+        if (convertView == null) {
+            // Inflate and initialize your layout
+            convertView = inflater.inflate(R.layout.grid_food, parent, false);
+            holder = new Holder();
+            holder.gridText = (TextView) rowView.findViewById(R.id.gridText);
+            holder.gridImage = (ImageView) rowView.findViewById(R.id.gridImage);
+            holder.plusOne = (Button) rowView.findViewById(R.id.plusButton);
+            holder.gridText.setText(list.get(position).getName());
+            Picasso.get().load(list.get(position).getImagePath()).into((ImageView)rowView.findViewById(R.id.gridImage));
 
-        holder.gridText.setText(list.get(position).getName());
 
-        if (list.get(position).getImagePath() != null) {
-            Picasso.get().load(list.get(position).getImagePath()).into(holder.gridImage);
-
+            convertView.setTag(holder);
         }
-        //holder.os_img.setImageResource(imageId[position]);
+        else
+            holder = (Holder) convertView.getTag();
 
-        rowView.setOnClickListener(new OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        return rowView;
+        // Do things that change for every grid item here, like
+        return convertView;
     }
 
 }
