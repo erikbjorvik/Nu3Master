@@ -36,16 +36,8 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<Consumable> meals;
 
     GridView gridview;
-    private static GridAdapter gridAdapter;
+    public static GridAdapter gridAdapter;
 
-    public static String[] osNameList = {
-            "Android",
-            "iOS"
-    };
-    public static int[] osImages = {
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher_round
-           };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

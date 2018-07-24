@@ -1,6 +1,7 @@
 package no.hvl.erikbjorvik.nu3app.Misc;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -60,33 +63,46 @@ public class GridAdapter extends BaseAdapter{
     {
         TextView gridText;
         ImageView gridImage;
-        Button plusOne;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
-        Holder holder = new Holder();
-        View rowView = inflater.inflate(R.layout.grid_food, null);
-
-        if (convertView == null) {
+        final ViewHolder holder;
+        if(convertView == null) {
             // Inflate and initialize your layout
             convertView = inflater.inflate(R.layout.grid_food, parent, false);
-            holder = new Holder();
-            holder.gridText = (TextView) rowView.findViewById(R.id.gridText);
-            holder.gridImage = (ImageView) rowView.findViewById(R.id.gridImage);
-            holder.plusOne = (Button) rowView.findViewById(R.id.plusButton);
-            holder.gridText.setText(list.get(position).getName());
-            Picasso.get().load(list.get(position).getImagePath()).into((ImageView)rowView.findViewById(R.id.gridImage));
+            holder = new ViewHolder();
+            holder.consumableImage = (ImageView) convertView.findViewById(R.id.gridImage);
+            holder.plusOne = (Button) convertView.findViewById(R.id.plusOne);
+            holder.consumableText = (TextView) convertView.findViewById(R.id.gridText);
+            holder.portionCounter = (TextView) convertView.findViewById(R.id.portionCount);
 
-
+            holder.plusOne.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    holder.portionCounter.setText("fis");
+                    MainActivity.meals.get(position).setName("fisen");
+                    MainActivity.gridAdapter.notifyDataSetChanged();
+                }
+            });
+            // etc, etc...
             convertView.setTag(holder);
         }
         else
-            holder = (Holder) convertView.getTag();
-
+            holder = (ViewHolder) convertView.getTag();
 
         // Do things that change for every grid item here, like
+        Picasso.get().load(list.get(position).getImagePath()).into(holder.consumableImage);
+        holder.consumableText.setText(list.get(position).getName());
         return convertView;
+    }
+
+
+    class ViewHolder {
+        TextView consumableText;
+        TextView portionCounter;
+        ImageView consumableImage;
+        Button plusOne;
+        Button minusOne;
     }
 
 }
