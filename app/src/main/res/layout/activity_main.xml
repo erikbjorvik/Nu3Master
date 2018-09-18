@@ -186,16 +186,20 @@
         android:background="@color/colorGrey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/predefinedMealsTable"
-        app:layout_constraintTop_toBottomOf="@+id/mealsBackground" />
+        app:layout_constraintTop_toBottomOf="@+id/mealsBackground"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/portionCountBg"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="35dp"
         android:background="@drawable/bg_rounded_light_blue"
+        app:layout_constraintEnd_toEndOf="@+id/drinksBg"
         app:layout_constraintStart_toEndOf="@+id/drinksLabel"
         app:layout_constraintTop_toTopOf="@+id/drinksBg" />
 
@@ -257,6 +261,305 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/topMenuContainer"
         app:layout_constraintTop_toTopOf="@+id/topMenuContainer" />
+
+    <TextView
+        android:id="@+id/waterLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Water"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/drinksBg"
+        app:layout_constraintTop_toBottomOf="@+id/drinksLabel" />
+
+    <ImageView
+        android:id="@+id/waterIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="13dp"
+        app:layout_constraintEnd_toStartOf="@+id/plusWater"
+        app:layout_constraintTop_toBottomOf="@+id/drinksLabel"
+        app:srcCompat="@drawable/water" />
+
+    <Button
+        android:id="@+id/minusWater"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="-"
+        app:layout_constraintEnd_toStartOf="@+id/waterIcon"
+        app:layout_constraintTop_toBottomOf="@+id/drinksLabel" />
+
+    <Button
+        android:id="@+id/plusWater"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drinksLabel" />
+
+
+    <TextView
+        android:id="@+id/coffeeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="22dp"
+        android:text="Coffee"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/drinksBg"
+        app:layout_constraintTop_toBottomOf="@+id/waterLabel" />
+
+    <ImageView
+        android:id="@+id/coffeeIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintEnd_toStartOf="@+id/plusCoffee"
+        app:layout_constraintTop_toBottomOf="@+id/waterIcon"
+        app:srcCompat="@drawable/water" />
+
+    <Button
+        android:id="@+id/minusCoffee"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="-"
+        app:layout_constraintEnd_toStartOf="@+id/coffeeIcon"
+        app:layout_constraintTop_toBottomOf="@+id/minusWater" />
+
+    <Button
+        android:id="@+id/plusCoffee"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plusWater" />
+
+    <TextView
+        android:id="@+id/teaLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="22dp"
+        android:text="Tea"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/drinksBg"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeLabel" />
+
+    <ImageView
+        android:id="@+id/teaIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintEnd_toStartOf="@+id/plusTea"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeIcon"
+        app:srcCompat="@drawable/water" />
+
+    <Button
+        android:id="@+id/minusTea"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="-"
+        app:layout_constraintEnd_toStartOf="@+id/teaIcon"
+        app:layout_constraintTop_toBottomOf="@+id/minusCoffee" />
+
+    <Button
+        android:id="@+id/plusTea"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plusCoffee" />
+
+    <TextView
+        android:id="@+id/milkLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="22dp"
+        android:text="Milk"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/drinksBg"
+        app:layout_constraintTop_toBottomOf="@+id/teaLabel" />
+
+    <ImageView
+        android:id="@+id/milkIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/plusmilk"
+        app:layout_constraintTop_toBottomOf="@+id/teaIcon"
+        app:srcCompat="@drawable/water" />
+
+    <Button
+        android:id="@+id/minusmilk"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="-"
+        app:layout_constraintEnd_toStartOf="@+id/milkIcon"
+        app:layout_constraintTop_toBottomOf="@+id/minusTea" />
+
+    <Button
+        android:id="@+id/plusmilk"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plusTea" />
+
+    <TextView
+        android:id="@+id/orangeJuiceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="22dp"
+        android:text="Orange Juice"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/drinksBg"
+        app:layout_constraintTop_toBottomOf="@+id/milkLabel" />
+
+    <ImageView
+        android:id="@+id/orangeJuiceIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/plusorangeJuice"
+        app:layout_constraintTop_toBottomOf="@+id/milkIcon"
+        app:srcCompat="@drawable/water" />
+
+    <Button
+        android:id="@+id/minusorangeJuice"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="-"
+        app:layout_constraintEnd_toStartOf="@+id/orangeJuiceIcon"
+        app:layout_constraintTop_toBottomOf="@+id/minusmilk" />
+
+    <Button
+        android:id="@+id/plusorangeJuice"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plusmilk" />
+
+    <TextView
+        android:id="@+id/appleJuiceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="22dp"
+        android:text="Apple Juice"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/drinksBg"
+        app:layout_constraintTop_toBottomOf="@+id/orangeJuiceLabel" />
+
+    <ImageView
+        android:id="@+id/appleJuiceIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintEnd_toStartOf="@+id/plusappleJuice"
+        app:layout_constraintTop_toBottomOf="@+id/orangeJuiceIcon"
+        app:srcCompat="@drawable/water" />
+
+    <Button
+        android:id="@+id/minusappleJuice"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="-"
+        app:layout_constraintEnd_toStartOf="@+id/appleJuiceIcon"
+        app:layout_constraintTop_toBottomOf="@+id/minusorangeJuice" />
+
+    <Button
+        android:id="@+id/plusappleJuice"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plusorangeJuice" />
+
+    <TextView
+        android:id="@+id/otherLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="22dp"
+        android:text="Other drinks"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/drinksBg"
+        app:layout_constraintTop_toBottomOf="@+id/appleJuiceLabel" />
+
+    <ImageView
+        android:id="@+id/otherIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintEnd_toStartOf="@+id/plusother"
+        app:layout_constraintTop_toBottomOf="@+id/appleJuiceIcon"
+        app:srcCompat="@drawable/water" />
+
+    <Button
+        android:id="@+id/minusother"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="-"
+        app:layout_constraintEnd_toStartOf="@+id/otherIcon"
+        app:layout_constraintTop_toBottomOf="@+id/minusappleJuice" />
+
+    <Button
+        android:id="@+id/plusother"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plusappleJuice" />
+
+
+
+
 
 
 </android.support.constraint.ConstraintLayout>

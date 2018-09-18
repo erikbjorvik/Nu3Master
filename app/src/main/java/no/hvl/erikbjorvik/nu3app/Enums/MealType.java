@@ -1,4 +1,4 @@
-package no.hvl.erikbjorvik.nu3app.Models;
+package no.hvl.erikbjorvik.nu3app.Enums;
 
 /**
  * Created by erikbjorvik on 21.07.2018.

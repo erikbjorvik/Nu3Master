@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Nu3 - Nutritional intake registration</string>
+    <string name="title_activity_review">ReviewActivity</string>
 </resources>
