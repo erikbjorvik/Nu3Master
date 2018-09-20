@@ -12,6 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:background="@color/colorGrey"
+        android:onClick="onChangeUserClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -70,6 +71,7 @@
         android:layout_marginTop="45dp"
         android:background="@drawable/buttonblue"
         android:elevation="0dp"
+        android:onClick="onChangeUserClick"
         android:text="Change patient"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toEndOf="@+id/patientNameText"

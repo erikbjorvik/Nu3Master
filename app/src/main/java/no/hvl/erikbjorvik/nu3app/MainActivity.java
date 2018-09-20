@@ -77,6 +77,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onChangeUserClick(View view) {
+        Intent intent = new Intent(this, ChoosePatientActivity.class);
+        startActivity(intent);
+    }
+
     public void mealButtonClick(View v) {
         String tag = v.getTag().toString();
         Toast.makeText(MainActivity.this, tag, Toast.LENGTH_SHORT).show();
