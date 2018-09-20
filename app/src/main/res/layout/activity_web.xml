@@ -6,15 +6,30 @@
     android:layout_height="match_parent"
     tools:context="no.hvl.erikbjorvik.nu3app.WebActivity">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/back"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:onClick="onBackClick"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="@+id/web"
+        app:layout_constraintEnd_toEndOf="@+id/web"
+        app:rippleColor="@color/colorGrey"
+        app:srcCompat="@android:drawable/ic_delete" />
+
     <WebView
         android:id="@+id/web"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    </WebView>
 </android.support.constraint.ConstraintLayout>

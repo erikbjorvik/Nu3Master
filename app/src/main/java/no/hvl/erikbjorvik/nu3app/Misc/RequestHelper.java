@@ -112,7 +112,7 @@ public class RequestHelper {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("Request failed", error.networkResponse.toString());
+                Log.e("Request failed", "meh");
             }
         }) {
             @Override

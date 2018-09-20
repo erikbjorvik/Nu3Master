@@ -1,5 +1,6 @@
 package no.hvl.erikbjorvik.nu3app;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -68,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
         requestHelper.request(Request.Method.GET,"api/consumable/intake/"+RequestHelper.userId+"/"+RequestHelper.getTodayString()+"/Dinner", null, RequestHelper.MAIN_CALLBACK);
         requestHelper.request(Request.Method.GET,"api/intake/meals/"+RequestHelper.userId+"/"+RequestHelper.getTodayString(), null, RequestHelper.KCAL_BUTTONS);
 
+    }
+
+    public void onKcalClick(View view) {
+        Intent intent = new Intent(this, WebActivity.class);
+        startActivity(intent);
     }
 
     public void mealButtonClick(View v) {
